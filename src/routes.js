@@ -1,7 +1,7 @@
 import HelloWorld from './components/HelloWorld';
-import Test from './components/Test';
+import Login from './components/Login';
 
 export default [
   { path: '/', component: HelloWorld },
-  { path: '/test', component: Test }
+  { path: '/login', component: Login }
 ]
