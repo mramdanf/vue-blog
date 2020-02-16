@@ -5,8 +5,6 @@
       color="primary"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -21,7 +19,7 @@
       </div>
     </v-app-bar>
 
-    <navigation-drawer :drawer="drawer"></navigation-drawer>    
+    <navigation-drawer></navigation-drawer>    
 
     <v-content>
       <HelloWorld/>
@@ -41,7 +39,7 @@ export default {
   },
 
   data: () => ({
-    drawer: false,
+    // 
   }),
 };
 </script>

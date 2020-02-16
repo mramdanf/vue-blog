@@ -1,8 +1,7 @@
 <template>
   <v-navigation-drawer
-    v-model="showDrawer"
     absolute
-    temporary
+    permanent
     right
     app
   >
@@ -40,7 +39,6 @@
 
 <script>
   export default {
-    props: ['drawer'],
     data: function () {
       return {
         showDrawer: this.drawer,
