@@ -1,4 +1,4 @@
-# meal-app
+# Vue Blog
 
 ## Project setup
 ```
