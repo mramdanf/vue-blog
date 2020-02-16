@@ -22,22 +22,21 @@
     <navigation-drawer></navigation-drawer>    
 
     <v-content>
-      <HelloWorld/>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 import NavigationDrawer from './components/NavigationDrawer';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     NavigationDrawer,
   },
-
   data: () => ({
     // 
   }),
