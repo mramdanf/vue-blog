@@ -39,11 +39,18 @@
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-spacer />
             <v-btn color="primary">Login</v-btn>
+            <v-spacer></v-spacer>
+            <span>No account ? <router-link to="/sign-up">Sign up</router-link></span>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<style scoped>
+  .sign-up-btn {
+    color: #1976d2;
+  }
+</style>
