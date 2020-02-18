@@ -7,13 +7,14 @@ import vuetify from './plugins/vuetify';
 import Routes from './routes';
 
 const configOptions = {
-  apiKey: "AIzaSyBZtl3I03xOSArIFjkFKGBp2eTV",
-  authDomain: "vue-js-store.firebaseapp.com",
-  databaseURL: "https://vue-js-store.firebaseio.com",
-  projectId: "vue-js-store",
-  storageBucket: "vue-js-store.appspot.com",
-  messagingSenderId: "272399570554",
-  appId: "1:272399570554:web:bdab9747e6e1c10c31cdc3"
+  apiKey: "AIzaSyAGYxm-Mh_ffdAKqqTOYT_tFZW58txDh-0",
+  authDomain: "vue-blog-project-63fd9.firebaseapp.com",
+  databaseURL: "https://vue-blog-project-63fd9.firebaseio.com",
+  projectId: "vue-blog-project-63fd9",
+  storageBucket: "vue-blog-project-63fd9.appspot.com",
+  messagingSenderId: "500857608788",
+  appId: "1:500857608788:web:d98c86867385669c606bc1",
+  measurementId: "G-1GH48ZHNVZ"
 };
 
 firebase.initializeApp(configOptions);
