@@ -24,37 +24,41 @@
             <v-form>
               <v-text-field
                 label="First Name"
-                name="firstName"
+                v-model="userDetail.firstName"
                 prepend-icon="account_circle"
                 type="text"
+                :rules="firstNameRules"
               />
 
               <v-text-field
                 label="Last Name"
-                name="lastName"
+                v-model="userDetail.lastName"
                 prepend-icon="account_circle"
                 type="text"
+                :rules="lastNameRules"
               />
               
               <v-text-field
                 label="Email"
-                name="emai"
+                v-model="userDetail.email"
                 prepend-icon="contact_mail"
                 type="email"
+                :rules="emailRules"
               />
               
               <v-text-field
                 label="Password"
-                name="password"
+                v-model="userDetail.password"
                 prepend-icon="lock"
                 type="password"
               />
               
               <v-text-field
                 label="Retype Password"
-                name="retypePassword"
+                v-model="userDetail.retypePassword"
                 prepend-icon="lock"
                 type="password"
+                :rules="retyePasswordRules"
               />
               
             </v-form>
@@ -68,3 +72,33 @@
     </v-row>
   </v-container>
 </template>
+
+<script>
+const requiredField = val => !!val || 'Field is required';
+
+export default {
+  data: function () {
+    return {
+      userDetail: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        retypePassword: '',
+      },
+      firstNameRules: [requiredField],
+      lastNameRules: [requiredField],
+      emailRules: [requiredField, v => /.+@.+\..+/.test(v) || 'Must be valid email'],
+      passwordRules: [requiredField],
+    }
+  },
+  computed: {
+    retyePasswordRules: function() {
+      return [
+        requiredField,
+        (this.userDetail.password && this.userDetail.password === this.userDetail.retypePassword) || 'Password dosen`t match',
+      ]  
+    }
+  }
+}
+</script>
