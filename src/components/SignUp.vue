@@ -75,17 +75,9 @@
 
 <script>
 const requiredField = val => !!val || 'Field is required';
-
 export default {
   data: function () {
     return {
-      userDetail: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        retypePassword: '',
-      },
       firstNameRules: [requiredField],
       lastNameRules: [requiredField],
       emailRules: [requiredField, v => /.+@.+\..+/.test(v) || 'Must be valid email'],
@@ -98,7 +90,7 @@ export default {
         requiredField,
         (this.userDetail.password && this.userDetail.password === this.userDetail.retypePassword) || 'Password dosen`t match',
       ]  
-    }
+    },
   }
 }
 </script>
