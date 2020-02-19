@@ -1,14 +1,28 @@
 const state = {
   detail: {
-    firstName: 'ramdan',
-    lastName: 'firdaus',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     retypePassword: '',
   }
 }
 
+const actions = {
+  submitSignUp({ commit }, userDetail) {
+    commit('setUserDetail', userDetail);
+  }
+}
+
+const mutations = {
+  setUserDetail(state, userDetail) {
+    state.detail = userDetail;
+  }
+}
+
 export default {
   namespaced: true,
   state,
+  actions,
+  mutations,
 }

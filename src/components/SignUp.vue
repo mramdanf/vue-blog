@@ -65,7 +65,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary">Sign Up</v-btn>
+            <v-btn color="primary" @click="submitSignUp()">Sign Up</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -76,8 +76,15 @@
 <script>
 const requiredField = val => !!val || 'Field is required';
 export default {
-  data: function () {
+  data () {
     return {
+      userDetail: {
+        firstName: 'ramdan',
+        lastName: 'firdaus',
+        email: 'mramdanf@gmail.com',
+        password: '123',
+        retypePassword: '123',
+      },
       firstNameRules: [requiredField],
       lastNameRules: [requiredField],
       emailRules: [requiredField, v => /.+@.+\..+/.test(v) || 'Must be valid email'],
@@ -91,6 +98,11 @@ export default {
         (this.userDetail.password && this.userDetail.password === this.userDetail.retypePassword) || 'Password dosen`t match',
       ]  
     },
+  },
+  methods: {
+    submitSignUp() {
+      this.$store.dispatch('user/submitSignUp', this.userDetail);
+    }
   }
 }
 </script>
