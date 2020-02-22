@@ -1,23 +1,12 @@
 <template>
-  <v-container
-    class="fill-height"
-    fluid
-  >
-    <v-row
-      align="center"
-      justify="center"
-    >
-      <v-col
-        cols="12"
-        sm="8"
-        md="4"
-      >
+  <v-container class="fill-height" fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <v-alert type="error" dismissible v-if="userAuthError">
+          {{ userAuthError }}
+        </v-alert>
         <v-card class="elevation-12">
-          <v-toolbar
-            class="primary"
-            dark
-            flat
-          >
+          <v-toolbar class="primary" dark flat>
             <v-toolbar-title>Sign Up Form</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
@@ -37,7 +26,7 @@
                 type="text"
                 :rules="lastNameRules"
               />
-              
+
               <v-text-field
                 label="Email"
                 v-model="userDetail.email"
@@ -45,22 +34,21 @@
                 type="email"
                 :rules="emailRules"
               />
-              
+
               <v-text-field
                 label="Password"
                 v-model="userDetail.password"
                 prepend-icon="lock"
                 type="password"
               />
-              
+
               <v-text-field
                 label="Retype Password"
                 v-model="userDetail.retypePassword"
                 prepend-icon="lock"
                 type="password"
-                :rules="retyePasswordRules"
+                :rules="retypePasswordRules"
               />
-              
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -74,35 +62,44 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 const requiredField = val => !!val || 'Field is required';
 export default {
-  data () {
+  data() {
     return {
       userDetail: {
         firstName: 'ramdan',
         lastName: 'firdaus',
         email: 'mramdanf@gmail.com',
-        password: '123',
-        retypePassword: '123',
+        password: 'rmd123123',
+        retypePassword: 'rmd123123',
       },
       firstNameRules: [requiredField],
       lastNameRules: [requiredField],
-      emailRules: [requiredField, v => /.+@.+\..+/.test(v) || 'Must be valid email'],
+      emailRules: [
+        requiredField,
+        v => /.+@.+\..+/.test(v) || 'Must be valid email',
+      ],
       passwordRules: [requiredField],
-    }
+    };
   },
   computed: {
-    retyePasswordRules: function() {
+    retypePasswordRules: function() {
       return [
         requiredField,
-        (this.userDetail.password && this.userDetail.password === this.userDetail.retypePassword) || 'Password dosen`t match',
-      ]  
+        (this.userDetail.password &&
+          this.userDetail.password === this.userDetail.retypePassword) ||
+          'Password dosen`t match',
+      ];
     },
+    ...mapState({
+      userAuthError: state => state.user.userAuthError,
+    }),
   },
   methods: {
     submitSignUp() {
       this.$store.dispatch('user/submitSignUp', this.userDetail);
-    }
-  }
-}
+    },
+  },
+};
 </script>
