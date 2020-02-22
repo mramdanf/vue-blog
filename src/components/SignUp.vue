@@ -2,7 +2,12 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-alert type="error" dismissible v-if="userAuthError">
+        <v-alert
+          type="error"
+          dismissible
+          v-if="userAuthError"
+          @input="onDismissErrorMsg"
+        >
           {{ userAuthError }}
         </v-alert>
         <v-card class="elevation-12">
@@ -68,11 +73,11 @@ export default {
   data() {
     return {
       userDetail: {
-        firstName: 'ramdan',
-        lastName: 'firdaus',
-        email: 'mramdanf@gmail.com',
-        password: 'rmd123123',
-        retypePassword: 'rmd123123',
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        retypePassword: '',
       },
       firstNameRules: [requiredField],
       lastNameRules: [requiredField],
@@ -99,6 +104,9 @@ export default {
   methods: {
     submitSignUp() {
       this.$store.dispatch('user/submitSignUp', this.userDetail);
+    },
+    onDismissErrorMsg() {
+      this.$store.commit('user/unSetAuthError');
     },
   },
 };

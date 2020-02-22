@@ -31,6 +31,9 @@ const mutations = {
   setAuthError(state, errorMassage) {
     state.userAuthError = errorMassage;
   },
+  unSetAuthError(state) {
+    state.userAuthError = '';
+  },
 };
 
 export default {
