@@ -73,11 +73,11 @@ export default {
   data() {
     return {
       userDetail: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        retypePassword: '',
+        firstName: 'ramdan',
+        lastName: 'firdaus',
+        email: 'mramdanf@gmail.com',
+        password: '1234567',
+        retypePassword: '1234567',
       },
       firstNameRules: [requiredField],
       lastNameRules: [requiredField],
@@ -99,6 +99,7 @@ export default {
     },
     ...mapState({
       userAuthError: state => state.user.userAuthError,
+      userUid: state => state.user.detail.uid,
     }),
   },
   methods: {
@@ -107,6 +108,13 @@ export default {
     },
     onDismissErrorMsg() {
       this.$store.commit('user/unSetAuthError');
+    },
+  },
+  watch: {
+    userUid(newVal) {
+      if (newVal) {
+        this.$router.push('/');
+      }
     },
   },
 };

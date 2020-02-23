@@ -16,23 +16,28 @@ const actions = {
   submitSignUp({ commit }, userDetail) {
     commit('setUserDetail', userDetail);
     auth.fireBaseUserSignUp(
-      () => {},
+      uid => commit('setUid', uid),
       errorMassage => commit('setAuthError', errorMassage),
-      userDetail.email,
-      userDetail.password,
+      userDetail,
     );
   },
 };
 
 const mutations = {
   setUserDetail(state, userDetail) {
-    state.detail = userDetail;
+    state.detail = {
+      ...userDetail,
+      uid: '',
+    };
   },
   setAuthError(state, errorMassage) {
     state.userAuthError = errorMassage;
   },
   unSetAuthError(state) {
     state.userAuthError = '';
+  },
+  setUid(state, uid) {
+    state.detail.uid = uid;
   },
 };
 
